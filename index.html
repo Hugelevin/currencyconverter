@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 500px; /* Adjust width as needed */
+            height: 290px; /* Adjust height to remove Wise branding */
+            overflow: hidden;
+            position: relative;
+            background: white;
+        }
+        iframe {
+            width: 100%;
+            height: 490px; /* Height must be greater than .container to cut branding */
+            border: none;
+            position: relative;
+            transform: translateY(-30px); /* Moves content up, hiding bottom branding */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <iframe src="https://wise.com/gb/currency-converter/fx-widget/converter?sourceCurrency=TRY&targetCurrency=EUR&amount=1000"></iframe>
+    </div>
+</body>
+</html>
