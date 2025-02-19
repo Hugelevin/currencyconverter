@@ -13,20 +13,22 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: white;
         }
         .container {
-            width: 500px; /* Adjust width as needed */
+            width: 360px; /* Adjust width to match cropped iframe */
             height: 290px; /* Adjust height to remove Wise branding */
             overflow: hidden;
             position: relative;
             background: white;
         }
         iframe {
-            width: 100%;
-            height: 490px; /* Height must be greater than .container to cut branding */
+            width: 360px; /* Wider to allow cropping */
+            height: 390px; /* Taller to shift content up */
             border: none;
             position: relative;
-            transform: translateY(-30px); /* Moves content up, hiding bottom branding */
+            transform: translate(-10px, -20px); /* Moves content left & up */
+            clip-path: inset(0px 20px 50px 20px); /* Crops left, right & bottom */
         }
     </style>
 </head>
