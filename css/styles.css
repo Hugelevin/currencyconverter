@@ -6,8 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: white; /* Set white background to highlight the gradient shadow */
-    color: white;
+    background: white;
 }
 
 .container {
@@ -23,18 +22,19 @@ body {
     padding-top: 10px;
 }
 
-/* Pseudo-element for gradient shadow */
+/* Enhanced gradient glow effect */
 .container::before {
     content: "";
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #ff6b6b, #5f27cd);
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
     z-index: -1;
-    filter: blur(20px);
+    border-radius: 25px; /* Ensures it follows the container shape */
+    background: linear-gradient(135deg, #ff6b6b, #5f27cd, #48dbfb); /* Expanded gradient */
+    filter: blur(30px); /* Increased blur for a softer glow */
+    opacity: 0.9; /* Slightly more opaque for visibility */
 }
 
 iframe {
