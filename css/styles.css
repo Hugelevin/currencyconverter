@@ -20,21 +20,10 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
-}
-
-/* Enhanced gradient glow effect */
-.container::before {
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
-    z-index: -1;
-    border-radius: 25px; /* Ensures it follows the container shape */
-    background: linear-gradient(135deg, #ff6b6b, #5f27cd, #48dbfb); /* Expanded gradient */
-    filter: blur(30px); /* Increased blur for a softer glow */
-    opacity: 0.9; /* Slightly more opaque for visibility */
+    box-shadow: 
+        0 0 20px 6px rgba(255, 107, 107, 0.6),
+        0 0 40px 16px rgba(95, 39, 205, 0.5),
+        0 0 60px 24px rgba(72, 219, 251, 0.4);
 }
 
 iframe {
