@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: white; /* Set white background to highlight the gradient shadow */
+    color: white;
+}
+
+.container {
+    width: 370px;
+    height: 340px;
+    overflow: hidden;
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Pseudo-element for gradient shadow */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ff6b6b, #5f27cd);
+    z-index: -1;
+    filter: blur(20px);
+}
+
+iframe {
+    width: 300px;
+    height: 400px;
+    border: none;
+    position: absolute;
+    top: 48px;
+    left: 35px;
+    transform: scale(1.34);
+}
