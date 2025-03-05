@@ -21,11 +21,10 @@ body {
     overflow: hidden;
     position: relative;
     background: white;
-    border-radius: 10px; /* Increased for smoother corners */
+    border-radius: 15px; /* Increased for smoother corners */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
     margin: 2rem auto; /* Additional spacing around the container */
