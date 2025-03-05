@@ -26,7 +26,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.10); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
     margin: 2rem auto; /* Additional spacing around the container */
 }
@@ -34,7 +34,7 @@ body {
 /* Hover effect for interactivity */
 .container:hover {
     transform: translateY(-3px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* A bit stronger shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* A bit stronger shadow on hover */
 }
   
 /* Iframe Styles */
@@ -47,10 +47,4 @@ iframe {
     left: 35px;
     transform: scale(1.34);
     transition: transform 0.3s ease; /* Smooth scale transition */
-}
-  
-/* Optional hover effect for the iframe */
-iframe:hover {
-    transform: scale(1.36);
-}
-  
+} 
