@@ -44,6 +44,6 @@ iframe {
     position: absolute;
     top: 40px;
     left: 25px;
-    transform: scale(1.34);
+    transform: scale(1.32);
     transition: transform 0.5s ease; /* Smooth scale transition */
 } 
