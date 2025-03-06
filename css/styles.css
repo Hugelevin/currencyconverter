@@ -16,7 +16,7 @@ body {
   
 /* Container Card */
 .container {
-    width: 380px;
+    width: 395px;
     height: 365px;
     overflow: hidden;
     position: relative;
@@ -43,7 +43,7 @@ iframe {
     border: none;
     position: absolute;
     top: 40px;
-    left: 30px;
+    left: 37px;
     transform: scale(1.32);
     transition: transform 0.5s ease; /* Smooth scale transition */
     overflow: hidden;
