@@ -3,19 +3,19 @@ const widgetTypes = {
     label: 'Converter',
     src: 'https://wise.com/gb/currency-converter/fx-widget/converter?sourceCurrency=TRY&targetCurrency=EUR&amount=1000',
     width: 321,
-    height: 380,
+    height: 285,
   },
   table: {
     label: 'Table',
     src: 'https://wise.com/gb/currency-converter/fx-widget/table?sourceCurrency=EUR&targetCurrencies=EUR%2CTRY%2CUSD%2CGBP%2CJPY%2CCNY%2CINR',
-    width: 340,
+    width: 370,
     height: 500,
   },
   chart: {
     label: 'Chart',
     src: 'https://wise.com/gb/currency-converter/fx-widget/chart?sourceCurrency=TRY&targetCurrency=EUR',
-    width: 370,
-    height: 570,
+    width: 440,
+    height: 520,
   },
 };
 
@@ -26,9 +26,9 @@ const tabs = [...document.querySelectorAll('[data-widget-type]')];
 
 function fitWidget() {
   const widget = widgetTypes[container.dataset.view];
-  const horizontalGutter = 32;
+  const horizontalGutter = -80;
   const availableWidth = Math.max(panel.clientWidth - horizontalGutter, 0);
-  const scale = Math.min(1, availableWidth / widget.width);
+  const scale = Math.min(1.35, availableWidth / widget.width);
 
   panel.style.setProperty('--widget-scale', String(scale));
   panel.style.setProperty('--widget-frame-height', `${Math.ceil(widget.height * scale)}px`);
@@ -42,7 +42,6 @@ function showWidget(type) {
   }
 
   container.dataset.view = type;
-  iframe.title = `Wise FX ${widget.label}`;
   iframe.width = widget.width;
   iframe.height = widget.height;
   iframe.scrolling = 'no';
