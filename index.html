@@ -4,26 +4,70 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Currency Converter</title>
-  
-  <!-- Link to external CSS -->
+
   <link rel="stylesheet" href="css/styles.css" />
-  
   <link rel="icon" type="image/icon" href="img/favicon.ico" />
   <meta property="og:title" content="Currency Converter" />
   <meta property="og:description" content="Get real-time currency conversion rates." />
   <meta property="og:image" content="img/preview.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hugelevin.github.io/currencyconverter/" />
-  
+
   <link rel="manifest" href="manifest.json" />
   <script defer src="js/script.js"></script>
-  
-  <!-- Google Fonts for improved typography -->
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="container">
-    <iframe scrolling="no" src="https://wise.com/gb/currency-converter/fx-widget/converter?sourceCurrency=TRY&amp;targetCurrency=EUR&amp;amount=1000"></iframe>
-  </div>
+  <main class="container" data-view="converter">
+    <div class="widget-type">
+      <span class="widget-type__label" id="widget-type-label">Widget Type</span>
+      <div class="widget-tabs" role="tablist" aria-labelledby="widget-type-label">
+        <button
+          class="widget-tab is-active"
+          id="tab-converter"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="widget-panel"
+          data-widget-type="converter"
+        >Converter</button>
+        <button
+          class="widget-tab"
+          id="tab-table"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="widget-panel"
+          data-widget-type="table"
+        >Table</button>
+        <button
+          class="widget-tab"
+          id="tab-chart"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="widget-panel"
+          data-widget-type="chart"
+        >Chart</button>
+      </div>
+    </div>
+
+    <div
+      class="widget-frame"
+      id="widget-panel"
+      role="tabpanel"
+      aria-labelledby="tab-converter"
+    >
+      <iframe
+        title="Wise FX Converter"
+        src="https://wise.com/gb/currency-converter/fx-widget/converter?sourceCurrency=TRY&amp;targetCurrency=EUR&amp;amount=1000"
+        width="321"
+        height="380"
+        frameborder="0"
+        allowtransparency="true"
+      ></iframe>
+    </div>
+  </main>
 </body>
 </html>
