@@ -24,6 +24,16 @@ const panel = document.querySelector('#widget-panel');
 const iframe = panel.querySelector('iframe');
 const tabs = [...document.querySelectorAll('[data-widget-type]')];
 
+function fitWidget() {
+  const widget = widgetTypes[container.dataset.view];
+  const horizontalGutter = 32;
+  const availableWidth = Math.max(panel.clientWidth - horizontalGutter, 0);
+  const scale = Math.min(1, availableWidth / widget.width);
+
+  panel.style.setProperty('--widget-scale', String(scale));
+  panel.style.setProperty('--widget-frame-height', `${Math.ceil(widget.height * scale)}px`);
+}
+
 function showWidget(type) {
   const widget = widgetTypes[type];
 
@@ -35,6 +45,7 @@ function showWidget(type) {
   iframe.title = `Wise FX ${widget.label}`;
   iframe.width = widget.width;
   iframe.height = widget.height;
+  iframe.scrolling = 'no';
 
   if (iframe.src !== widget.src) {
     iframe.src = widget.src;
@@ -49,6 +60,7 @@ function showWidget(type) {
 
   const activeTab = document.querySelector(`[data-widget-type="${type}"]`);
   panel.setAttribute('aria-labelledby', activeTab.id);
+  fitWidget();
 }
 
 tabs.forEach((tab, index) => {
@@ -67,3 +79,13 @@ tabs.forEach((tab, index) => {
     nextTab.focus();
   });
 });
+
+if ('ResizeObserver' in window) {
+  const resizeObserver = new ResizeObserver(fitWidget);
+  resizeObserver.observe(panel);
+} else {
+  window.addEventListener('resize', fitWidget);
+}
+
+iframe.addEventListener('load', fitWidget);
+fitWidget();
