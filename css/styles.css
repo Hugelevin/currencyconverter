@@ -33,6 +33,7 @@ body {
     overflow: hidden;
     position: relative;
     background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -99,49 +100,22 @@ body {
 
 .widget-frame {
     width: 100%;
+    height: var(--widget-frame-height, 380px);
     position: relative;
     overflow: hidden;
+    background: var(--surface);
+    transition: height 250ms ease;
 }
 
 .widget-frame iframe {
     border: 0;
     display: block;
     position: absolute;
+    top: 0;
     left: 50%;
-}
-
-.container[data-view='converter'] .widget-frame {
-    height: 365px;
-}
-
-.container[data-view='converter'] iframe {
-    width: 321px;
-    height: 380px;
-    top: 40px;
-    transform: translateX(-50%) scale(1.32);
+    overflow: hidden;
+    transform: translateX(-50%) scale(var(--widget-scale, 1));
     transform-origin: top center;
-}
-
-.container[data-view='table'] .widget-frame {
-    height: 500px;
-}
-
-.container[data-view='table'] iframe {
-    width: 340px;
-    height: 500px;
-    top: 0;
-    transform: translateX(-50%);
-}
-
-.container[data-view='chart'] .widget-frame {
-    height: 570px;
-}
-
-.container[data-view='chart'] iframe {
-    width: 370px;
-    height: 570px;
-    top: 0;
-    transform: translateX(-50%);
 }
 
 @media (max-width: 374px) {
@@ -162,19 +136,12 @@ body {
         font-size: 13px;
     }
 
-    .container[data-view='converter'] iframe {
-        transform: translateX(-50%) scale(1.1);
-    }
-
-    .container[data-view='table'] iframe,
-    .container[data-view='chart'] iframe {
-        width: 100%;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .container,
-    .widget-tab {
+    .widget-tab,
+    .widget-frame {
         transition: none;
     }
 }
