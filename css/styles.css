@@ -1,50 +1,180 @@
-/* Base Styles */
+:root {
+    --background: #fafafa;
+    --surface: #ffffff;
+    --text: #333333;
+    --muted: #667085;
+    --border: #e4e7ec;
+    --active: #163300;
+    --active-background: #e9f7df;
+    --focus: #2f6f00;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    padding: 0;
+    padding: 24px 16px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #FAFAFA; /* Off-white background */
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--background);
     font-family: 'Inter', 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #333;
+    color: var(--text);
 }
-  
-/* Container Card */
+
 .container {
-    width: 395px;
-    height: 365px;
+    width: min(395px, 100%);
     overflow: hidden;
     position: relative;
-    background: white;
-    border-radius: 15px; /* Increased for smoother corners */
+    background: var(--surface);
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
-    transition: transform 0.5s ease, box-shadow 0.5s ease; /* Smooth hover transition */
-    margin: 2rem auto; /* Additional spacing around the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 250ms ease, box-shadow 250ms ease;
 }
-  
-/* Hover effect for interactivity */
+
 .container:hover {
-    transform: translateY(-3px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* A bit stronger shadow on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
-  
-/* Iframe Styles */
-iframe {
+
+.widget-type {
+    width: 100%;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.widget-type__label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.widget-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.widget-tab {
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.widget-tab:hover {
+    border-color: #aeb5bf;
+}
+
+.widget-tab:focus-visible {
+    outline: 3px solid rgba(47, 111, 0, 0.35);
+    outline-offset: 2px;
+}
+
+.widget-tab.is-active {
+    border-color: var(--active);
+    background: var(--active-background);
+    color: var(--active);
+}
+
+.widget-frame {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.widget-frame iframe {
+    border: 0;
+    display: block;
+    position: absolute;
+    left: 50%;
+}
+
+.container[data-view='converter'] .widget-frame {
+    height: 365px;
+}
+
+.container[data-view='converter'] iframe {
     width: 321px;
     height: 380px;
-    border: none;
-    position: absolute;
     top: 40px;
-    left: 37px;
-    transform: scale(1.32);
-    transition: transform 0.5s ease; /* Smooth scale transition */
-    overflow: hidden;
-} 
+    transform: translateX(-50%) scale(1.32);
+    transform-origin: top center;
+}
+
+.container[data-view='table'] .widget-frame {
+    height: 500px;
+}
+
+.container[data-view='table'] iframe {
+    width: 340px;
+    height: 500px;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.container[data-view='chart'] .widget-frame {
+    height: 570px;
+}
+
+.container[data-view='chart'] iframe {
+    width: 370px;
+    height: 570px;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 374px) {
+    body {
+        padding-inline: 8px;
+    }
+
+    .widget-type {
+        padding-inline: 12px;
+    }
+
+    .widget-tabs {
+        gap: 4px;
+    }
+
+    .widget-tab {
+        padding-inline: 6px;
+        font-size: 13px;
+    }
+
+    .container[data-view='converter'] iframe {
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    .container[data-view='table'] iframe,
+    .container[data-view='chart'] iframe {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .container,
+    .widget-tab {
+        transition: none;
+    }
+}
