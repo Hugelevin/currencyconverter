@@ -13,60 +13,66 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hugelevin.github.io/currencyconverter/" />
 
-  <link rel="manifest" href="manifest.json" />
-  <script defer src="js/script.js"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://wise.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <main class="container" data-view="converter">
-    <div class="widget-type">
-      <div class="widget-tabs" role="tablist" aria-label="Widget view">
-        <button
-          class="widget-tab is-active"
-          id="tab-converter"
-          type="button"
-          role="tab"
-          aria-selected="true"
-          aria-controls="widget-panel"
-          data-widget-type="converter"
-        >Converter</button>
-        <button
-          class="widget-tab"
-          id="tab-table"
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="widget-panel"
-          data-widget-type="table"
-        >Table</button>
-        <button
-          class="widget-tab"
-          id="tab-chart"
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="widget-panel"
-          data-widget-type="chart"
-        >Chart</button>
-      </div>
-    </div>
+  <main>
+    <fieldset class="container">
+      <legend class="visually-hidden">Widget view</legend>
 
-    <div
-      class="widget-frame"
-      id="widget-panel"
-      role="tabpanel"
-      aria-labelledby="tab-converter"
-    >
-      <iframe
-        src="https://wise.com/gb/currency-converter/fx-widget/converter?sourceCurrency=TRY&amp;targetCurrency=EUR&amp;amount=1000"
-        width="321"
-        height="290"
-        frameborder="0"
-        allowtransparency="true"
-        scrolling="no"
-      ></iframe>
-    </div>
+      <input class="widget-toggle" type="radio" name="widget-view" id="view-converter" checked />
+      <input class="widget-toggle" type="radio" name="widget-view" id="view-table" />
+      <input class="widget-toggle" type="radio" name="widget-view" id="view-chart" />
+
+      <div class="widget-type">
+        <div class="widget-tabs">
+          <label class="widget-tab" for="view-converter">Converter</label>
+          <label class="widget-tab" for="view-table">Table</label>
+          <label class="widget-tab" for="view-chart">Chart</label>
+        </div>
+      </div>
+
+      <div class="widget-frame">
+        <section class="widget-view widget-view--converter" aria-label="Currency converter">
+          <iframe
+            title="Converter"
+            src="https://wise.com/gb/currency-converter/fx-widget/converter?sourceCurrency=TRY&amp;targetCurrency=EUR&amp;amount=1000"
+            width="321"
+            height="300"
+            frameborder="0"
+            allowtransparency="true"
+            scrolling="no"
+          ></iframe>
+        </section>
+
+        <section class="widget-view widget-view--table" aria-label="Exchange-rate table">
+          <iframe
+            title="Table"
+            src="https://wise.com/gb/currency-converter/fx-widget/table?sourceCurrency=EUR&amp;targetCurrencies=EUR%2CTRY%2CUSD%2CGBP%2CJPY%2CCNY%2CINR"
+            width="380"
+            height="580"
+            frameborder="0"
+            allowtransparency="true"
+            scrolling="no"
+          ></iframe>
+        </section>
+
+        <section class="widget-view widget-view--chart" aria-label="Exchange-rate chart">
+          <iframe
+            title="Chart"
+            src="https://wise.com/gb/currency-converter/fx-widget/chart?sourceCurrency=TRY&amp;targetCurrency=EUR"
+            width="440"
+            height="520"
+            frameborder="0"
+            allowtransparency="true"
+            scrolling="no"
+          ></iframe>
+        </section>
+      </div>
+    </fieldset>
   </main>
 </body>
 </html>
