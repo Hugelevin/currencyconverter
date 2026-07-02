@@ -2,11 +2,13 @@
     --background: #fafafa;
     --surface: #ffffff;
     --text: #000000;
-    --border: #dce4df;
+    --border: #dbdbdb;
     --brand: #666262;
     --tab-surface: #f1f5f2;
     --tab-hover: #e3ebe6;
     --focus: #8b8b8b;
+    --icon-size: 34px;
+    --icon-muted: #88888860;
 }
 
 * {
@@ -70,9 +72,10 @@ main {
 
 .widget-tabs {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    padding: 4px;
+    grid-template-columns: 0.9fr 1.2fr 0.9fr;
+    align-items: center;
+    gap: 6px;
+    padding: 6px;
     border: 1px solid var(--border);
     border-radius: 13px;
     background: var(--tab-surface);
@@ -80,18 +83,48 @@ main {
 
 .widget-tab {
     min-height: 48px;
-    padding: 10px 12px;
+    padding: 0;
     display: grid;
     place-items: center;
     border: 1px solid transparent;
     border-radius: 9px;
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 600;
+    color: var(--icon-muted);
     cursor: pointer;
     touch-action: manipulation;
     user-select: none;
-    transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.widget-tab--primary {
+    min-height: 56px;
+}
+
+.widget-icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: block;
+    background-color: currentColor;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+.widget-icon--chart {
+    -webkit-mask-image: url('../img/chart.svg');
+    mask-image: url('../img/chart.svg');
+}
+
+.widget-icon--converter {
+    -webkit-mask-image: url('../img/converter.svg');
+    mask-image: url('../img/converter.svg');
+}
+
+.widget-icon--table {
+    -webkit-mask-image: url('../img/table.svg');
+    mask-image: url('../img/table.svg');
 }
 
 .widget-tab:hover {
@@ -132,7 +165,7 @@ main {
 }
 
 #view-table:checked ~ .widget-frame {
-    height: 650px;
+    height: 800px;
 }
 
 .widget-view {
@@ -175,4 +208,28 @@ main {
     visibility: visible;
     pointer-events: auto;
     transition-delay: 0s;
+}
+
+@media (max-width: 374px) {
+    body {
+        padding-inline: 8px;
+    }
+
+    .widget-tabs {
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .widget-tab--primary {
+        min-height: 52px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .container,
+    .widget-tab,
+    .widget-frame,
+    .widget-view {
+        transition: none;
+    }
 }
