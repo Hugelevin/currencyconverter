@@ -23,15 +23,24 @@
     <fieldset class="container">
       <legend class="visually-hidden">Widget view</legend>
 
-      <input class="widget-toggle" type="radio" name="widget-view" id="view-converter" checked />
       <input class="widget-toggle" type="radio" name="widget-view" id="view-chart" />
+      <input class="widget-toggle" type="radio" name="widget-view" id="view-converter" checked />
       <input class="widget-toggle" type="radio" name="widget-view" id="view-table" />
 
       <div class="widget-type">
         <div class="widget-tabs">
-          <label class="widget-tab" for="view-converter">Converter</label>
-          <label class="widget-tab" for="view-chart">Chart</label>
-          <label class="widget-tab" for="view-table">Table</label>
+          <label class="widget-tab" for="view-chart" title="Chart">
+            <span class="widget-icon widget-icon--chart" aria-hidden="true"></span>
+            <span class="visually-hidden">Chart</span>
+          </label>
+          <label class="widget-tab widget-tab--primary" for="view-converter" title="Converter">
+            <span class="widget-icon widget-icon--converter" aria-hidden="true"></span>
+            <span class="visually-hidden">Converter</span>
+          </label>
+          <label class="widget-tab" for="view-table" title="Table">
+            <span class="widget-icon widget-icon--table" aria-hidden="true"></span>
+            <span class="visually-hidden">Table</span>
+          </label>
         </div>
       </div>
 
@@ -63,9 +72,9 @@
         <section class="widget-view widget-view--table" aria-label="Exchange-rate table">
           <iframe
             title="Table"
-            src="https://wise.com/gb/currency-converter/fx-widget/table?sourceCurrency=EUR&amp;targetCurrencies=EUR%2CTRY%2CUSD%2CGBP%2CJPY%2CCNY%2CINR"
+            src="https://wise.com/gb/currency-converter/fx-widget/table?sourceCurrency=EUR&amp;targetCurrencies=USD%2CEUR%2CJPY%2CGBP%2CCNY%2CCHF%2CAUD%2CCAD%2CINR"
             width="380"
-            height="520"
+            height="800"
             frameborder="0"
             allowtransparency="true"
             scrolling="no"
