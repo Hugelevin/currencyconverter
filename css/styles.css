@@ -191,7 +191,7 @@ main {
 }
 
 #view-table:checked ~ .widget-frame {
-    height: 1330px;
+    height: 1225px;
 }
 
 .widget-view {
