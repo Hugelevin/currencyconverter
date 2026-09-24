@@ -29,6 +29,32 @@ body {
     line-height: 1.6;
 }
 
+/* Only the long Table view may scroll the page. The Chart view is locked
+   only where it fits (about 700px), so short phones can still reach it. */
+html:has(#view-converter:checked) {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+html:has(#view-converter:checked) body {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+@media (min-height: 720px) {
+    html:has(#view-chart:checked) {
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
+    html:has(#view-chart:checked) body {
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+}
+
 main {
     width: min(395px, 100%);
 }
